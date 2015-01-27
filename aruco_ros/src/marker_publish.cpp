@@ -196,6 +196,13 @@ public:
           marker_i.id = markers_.at(i).id;
           marker_i.confidence = 1.0;
 
+          for (int j = 0; j < 4; j++) {
+              aruco_msgs::Point2f point;
+              point.x = markers_.at(i)[j].x;
+              point.y = markers_.at(i)[j].y;
+              marker_i.corners[j] = point;
+          }
+
           markers_[i].draw(inImage_,cv::Scalar(0,0,255),2);
         }
 
